@@ -8,7 +8,9 @@ export const HomePage:React.FC=()=>{
     return(
         <>
         <Header content_link="Cadastrar paciente" link="/register"/>
-        
+        <main className="main">
+
+        </main>
         </>
     )
 

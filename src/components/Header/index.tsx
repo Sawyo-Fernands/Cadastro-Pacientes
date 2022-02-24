@@ -16,17 +16,17 @@ export const Header:React.FC<IHeader>=({link,content_link})=>{
         <header className="top">
             <nav className="navigation">
                 <div>
-                <Link to="/" className="Link">
-                <h1 className="title">
-                    ACME
-                </h1>
-                </Link>
+                    <Link to="/" className="Link">
+                        <h1 className="title">
+                             ACME
+                        </h1>
+                    </Link>
                 </div>
                 
                 <div>
                     <Link className="Link" to={link}>
                         <button className="New-post">{content_link}</button>
-                        </Link>
+                    </Link>
                 </div>
             </nav>
             
