@@ -92,3 +92,6 @@ input {
     background-color:#f6f6f6 ;
     border-radius: 12px;
 }
+.error-message{
+    color: rgb(194, 84, 84);
+}
