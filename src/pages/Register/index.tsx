@@ -1,10 +1,15 @@
 import React from "react"
+import { Header } from "../../components/Header"
+import './register.css'
 
 
 export const RegisterPage:React.FC=()=>{
 
     return(
-        <h1>Pagina de registro de usuários</h1>
-    )
+        <>
+        <Header content_link="Voltar" link="/"/>
+        
+        </>   
+ )
 
 }

@@ -1,0 +1,45 @@
+.New-post{
+    padding: 0.8rem;
+    border-radius: 17px;
+    background-color: #f6f6f6;
+    font-size: 0.8rem;
+    font-family: "Poppins",sans-serif;
+    font-weight: 500;
+    border: 1px solid grey;
+    color: grey;
+    cursor: pointer;
+}
+
+.top{
+    background-color: #252525;
+    height: 6rem;
+    width: 100%;
+    position:fixed;
+    top: 0;
+}
+.navigation{
+    width:85%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.title{
+    color: #f6f6f6;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 700;
+    
+    
+}
+.title-span{
+    color: #daa520;
+}
+
+
+
+.Link{
+    text-decoration: none;
+    cursor: pointer;
+}

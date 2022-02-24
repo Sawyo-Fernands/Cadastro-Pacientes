@@ -1,10 +1,14 @@
 import React from "react"
-
+import { Header } from "../../components/Header"
+import './edit.css'
 
 export const EditPage:React.FC=()=>{
 
     return(
-        <h1>Pagina de Edição de usuários</h1>
+        <>
+        <Header content_link="Voltar" link="/"/>
+   
+        </>
     )
 
 }

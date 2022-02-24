@@ -1,10 +1,15 @@
 import React from "react"
+import { Header } from "../../components/Header"
+import './home.css'
 
 
 export const HomePage:React.FC=()=>{
 
     return(
-        <h1>Pagina de exibição dos usuários</h1>
+        <>
+        <Header content_link="Cadastrar paciente" link="/register"/>
+        
+        </>
     )
 
 }
