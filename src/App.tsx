@@ -1,6 +1,6 @@
 import React from "react"
 import {RoutesApp} from './routes'
-import './styles/form.css'
+import './shared/styles/form.css'
 
 function App() {
   

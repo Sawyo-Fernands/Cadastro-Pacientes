@@ -1,9 +1,9 @@
 import React from "react"
-import { Header } from "../../components/Header"
+import { Header } from "../../shared/components/Header"
 import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Schema } from "../../Schemas";
-import { IData } from "../../interfaces";
+import { Schema } from "../../shared/Schemas";
+import { IData } from "../../shared/interfaces";
 
 
 export const EditPage:React.FC=()=>{

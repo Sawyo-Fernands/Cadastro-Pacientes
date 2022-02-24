@@ -1,9 +1,9 @@
 import React from "react"
-import { Header } from "../../components/Header"
+import { Header } from "../../shared/components/Header"
 import {useForm} from 'react-hook-form'
-import { IData } from "../../interfaces";
+import { IData } from "../../shared/interfaces";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Schema } from "../../Schemas";
+import { Schema } from "../../shared/Schemas";
 
 
 
