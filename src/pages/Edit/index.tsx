@@ -6,7 +6,6 @@ import { Schema } from "../../shared/Schemas";
 import { IData } from "../../shared/interfaces";
 import {  useParams } from "react-router-dom";
 import { useGetPatients } from "../../hooks/useGetPatients";
-import { toast,ToastContainer } from "react-toastify";
 
 
 export const EditPage:React.FC=()=>{
@@ -48,26 +47,18 @@ export const EditPage:React.FC=()=>{
                 let newData=patients.filter((item)=>{
                     return (item.id !== idNumber )
                 })
-                
                 newData.unshift(patient)
                 localStorage.setItem('@patient',JSON.stringify(newData))
+                    
             }
         })
-        toast.success('Cliente editado com sucesso', {
-            position: "top-right",
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            draggable: true,
-            progress: undefined,
-            });
+       
     })
 
     return(
         <>
         <Header content_link="Voltar" link="/"/>
         <main>
-            <ToastContainer/>
         <section className="section">
         <form  className="form"onSubmit={onSubmit}>
                         <div className="content">
@@ -82,7 +73,7 @@ export const EditPage:React.FC=()=>{
                         </div>
                         <div className="content">
                             <label >CPF</label>
-                            <input type="text"{...register('cpf')} disabled/>
+                            <input type="text"{...register('cpf')} />
                             <p className="error-message">{errors.cpf?.message}</p>
                         </div>
                         <div className="content">

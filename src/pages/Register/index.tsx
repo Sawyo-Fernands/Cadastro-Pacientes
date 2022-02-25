@@ -8,6 +8,8 @@ import { savePatient } from "../../shared/services/localstore";
 
 export const RegisterPage:React.FC=()=>{
 
+    
+
 
     const { register, handleSubmit, formState:{ errors } } = useForm<IData>({
         resolver: yupResolver(Schema)
@@ -26,8 +28,8 @@ export const RegisterPage:React.FC=()=>{
               status:data.status
           }
           
-         savePatient("@patient",patient)
-       
+      savePatient("@patient",patient)
+
       })
 
     return(

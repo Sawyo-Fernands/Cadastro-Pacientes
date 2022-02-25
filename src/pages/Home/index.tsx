@@ -33,6 +33,7 @@ export const HomePage:React.FC=()=>{
                     return (item.id !== id)
                 })
                 newData.push(patient)
+                
                 localStorage.setItem('@patient',JSON.stringify(newData))
                 setPatients(newData)
             }   
@@ -41,7 +42,6 @@ export const HomePage:React.FC=()=>{
     }   
     async function handleCardDelete(id:number){
             const result =await deletePatient(patients,id)
-            
             setPatients(result)
     }
 
@@ -83,7 +83,6 @@ export const HomePage:React.FC=()=>{
                         <Card  key={ patient.id} nome={patient.nome} 
                         cpf={patient.cpf} endereco={patient.endereco} 
                         sexo={patient.sexo} id={patient.id} 
-                        delete_patient={()=>{}}
                         nascimento={patient.nascimento} status={patient.status}
                         inactivate_patient={()=>{handleCardID(patient.id,patient.nome,patient.nascimento,patient.cpf,patient.endereco,patient.sexo)}}/>
             )

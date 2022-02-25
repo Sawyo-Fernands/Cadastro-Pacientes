@@ -17,6 +17,7 @@ export async function savePatient(key:string,newPatient:IData){
 
     if(hasPatient){
         alert('O cpf já está cadastrado !')
+
         return 
     }
 

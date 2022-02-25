@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import './card.css'
@@ -17,12 +17,14 @@ interface ICard{
     visibility?:string;
 
     inactivate_patient:()=>void;
-    delete_patient: () => void;
+    delete_patient?: () => void;
 
 }
 
 
 export const Card:React.FC<ICard>=({id,nome,sexo,cpf,endereco,status,nascimento,buttons,card_background,inactivate_patient,color_text,visibility,delete_patient})=>{
+
+    
 
     return(
         <div id="card" className={`${card_background}`}>
@@ -49,7 +51,7 @@ export const Card:React.FC<ICard>=({id,nome,sexo,cpf,endereco,status,nascimento,
                     <button id="button-inactive" 
                     className={`${buttons}`} onClick={()=>inactivate_patient()}
                     >Inativo</button>
-                    <button className={`delete-item ${visibility}`} onClick={()=>delete_patient()}>Deletar</button>
+                    <button className={`delete-item ${visibility}`} onClick={delete_patient}>Deletar</button>
                 </div>
             </div>
         </div>
