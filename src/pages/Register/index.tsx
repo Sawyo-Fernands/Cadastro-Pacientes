@@ -4,8 +4,7 @@ import {useForm} from 'react-hook-form'
 import { IData } from "../../shared/interfaces";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Schema } from "../../shared/Schemas";
-
-
+import { savePatient } from "../../shared/services/localstore";
 
 export const RegisterPage:React.FC=()=>{
 
@@ -15,7 +14,21 @@ export const RegisterPage:React.FC=()=>{
         resolver: yupResolver(Schema)
       });
 
-      const onSubmit=handleSubmit(data => console.log(data))
+      const onSubmit=handleSubmit(data => {
+
+        const idRandom=(num : number)=>Math.floor( Math.random() * num );
+          let patient={
+              id:idRandom(999999),
+              nome:data.nome,
+              nascimento:data.nascimento,
+              cpf:data.cpf,
+              sexo:data.sexo ,
+              endereco:data.endereco ,
+              status:data.status
+          }
+          savePatient("@patient",patient)
+          
+      })
 
     return(
         <>
