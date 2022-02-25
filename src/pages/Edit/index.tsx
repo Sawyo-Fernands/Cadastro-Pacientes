@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import { Header } from "../../shared/components/Header"
 import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -48,7 +48,7 @@ export const EditPage:React.FC=()=>{
         patients.forEach((item)=>{
             if(item.id == idNumber){
                 let newData=patients.filter((item)=>{
-                    return (item.id !== idNumber)
+                    return (item.id !== idNumber )
                 })
                 
                 newData.unshift(patient)
@@ -63,9 +63,6 @@ export const EditPage:React.FC=()=>{
             draggable: true,
             progress: undefined,
             });
-
-
-        
     })
 
     return(
@@ -87,7 +84,7 @@ export const EditPage:React.FC=()=>{
                         </div>
                         <div className="content">
                             <label >CPF</label>
-                            <input type="text"{...register('cpf')} />
+                            <input type="text"{...register('cpf')} disabled/>
                             <p className="error-message">{errors.cpf?.message}</p>
                         </div>
                         <div className="content">
@@ -109,7 +106,7 @@ export const EditPage:React.FC=()=>{
                                  <p className="error-message">{errors.status?.message}</p>
                         </div>
                         <div className="btn">
-                            <button type="submit" id="button">Enviar</button>
+                            <button type="submit" id="button">Editar</button>
                         </div>
                 </form>
                 

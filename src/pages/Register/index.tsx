@@ -26,19 +26,21 @@ export const RegisterPage:React.FC=()=>{
               endereco:data.endereco ,
               status:data.status
           }
-          savePatient("@patient",patient)
-    
-          toast.success('Cliente cadastrado com sucesso', {
-            position: "top-right",
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            draggable: true,
-            progress: undefined,
-            });
-
-           
           
+         const hasPatient=savePatient("@patient",patient)
+
+            toast.success('Cliente cadastrado com sucesso', {
+                position: "top-right",
+                autoClose: 500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                });
+       
+         
+  
       })
 
     return(
@@ -82,7 +84,7 @@ export const RegisterPage:React.FC=()=>{
                                  <p className="error-message">{errors.status?.message}</p>
                         </div>
                         <div className="btn">
-                            <button type="submit" id="button">Enviar</button>
+                            <button type="submit" id="button">Cadastrar</button>
                         </div>
                 </form>
                 

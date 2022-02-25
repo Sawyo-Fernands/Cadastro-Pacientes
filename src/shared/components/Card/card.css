@@ -43,7 +43,11 @@
 .background-inative .card-header h3{
     text-decoration: line-through;
 }
-
+.text_red{
+    color: whitesmoke;
+    font-family: 'Poppins';
+    font-size: 20px;
+}
 @media (max-width:1417px){
     #card{
         width: 40%;
@@ -54,3 +58,9 @@
             width: 100%;
         }
 } 
+.delete-item{
+    display: none;
+}
+.block{
+    display: block;
+}

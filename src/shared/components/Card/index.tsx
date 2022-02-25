@@ -13,13 +13,16 @@ interface ICard{
     status:string;
     buttons?:string;
     card_background?:string;
+    color_text?:string;
+    visibility?:string;
 
     inactivate_patient:()=>void;
+    delete_patient:()=>void;
 
 }
 
 
-export const Card:React.FC<ICard>=({id,nome,sexo,cpf,endereco,status,nascimento,buttons,card_background,inactivate_patient})=>{
+export const Card:React.FC<ICard>=({id,nome,sexo,cpf,endereco,status,nascimento,buttons,card_background,inactivate_patient,color_text,visibility,delete_patient})=>{
 
     return(
         <div id="card" className={`${card_background}`}>
@@ -37,7 +40,7 @@ export const Card:React.FC<ICard>=({id,nome,sexo,cpf,endereco,status,nascimento,
                 </div>
                 <div>
                     <p className="text">Endereço: {endereco}</p>
-                    <p className="text">Status: {status}</p>
+                    <p className={`text ${color_text}`}>Status: {status}</p>
                 </div>
                 <div id="buttons">
                     <Link to={{pathname:`/edit/${id}`}}>
@@ -46,6 +49,7 @@ export const Card:React.FC<ICard>=({id,nome,sexo,cpf,endereco,status,nascimento,
                     <button id="button-inactive" 
                     className={`${buttons}`} onClick={()=>inactivate_patient()}
                     >Inativo</button>
+                    <button className={`delete-item ${visibility}`} onClick={()=>delete_patient()}>Deletar</button>
                 </div>
             </div>
         </div>

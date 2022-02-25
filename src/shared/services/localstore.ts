@@ -17,7 +17,7 @@ export async function savePatient(key:string,newPatient:IData){
 
     if(hasPatient){
         alert('O cpf já está cadastrado !')
-        return
+        return 
     }
 
     patientStore.push(newPatient)
@@ -25,4 +25,13 @@ export async function savePatient(key:string,newPatient:IData){
 
 }
 
+export function deletePatient(patients:IData[],id:number){
 
+    let myPatients=patients.filter( item => {
+        return(item.id !== id)
+    })
+
+    localStorage.setItem('@patient',JSON.stringify(myPatients))
+    return myPatients
+
+}
