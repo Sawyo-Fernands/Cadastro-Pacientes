@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Schema } from "../../shared/Schemas";
 import { savePatient } from "../../shared/services/localstore";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 export const RegisterPage:React.FC=()=>{
 
@@ -30,7 +31,19 @@ export const RegisterPage:React.FC=()=>{
               status:data.status
           }
           savePatient("@patient",patient)
-          navigate('/')
+
+          toast.success('Cliente cadastrado com sucesso', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined,
+            });
+
+            setTimeout(() => {
+                navigate('/')
+            }, 3000);
           
       })
 
@@ -38,6 +51,7 @@ export const RegisterPage:React.FC=()=>{
         <>
         <Header content_link="Voltar" link="/"/>
         <main>
+            <ToastContainer/>
         <section className="section">
                 <form  className="form"onSubmit={onSubmit}>
                         <div className="content">

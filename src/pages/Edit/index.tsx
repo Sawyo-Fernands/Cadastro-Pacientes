@@ -6,6 +6,7 @@ import { Schema } from "../../shared/Schemas";
 import { IData } from "../../shared/interfaces";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetPatients } from "../../hooks/useGetPatients";
+import { toast,ToastContainer } from "react-toastify";
 
 
 export const EditPage:React.FC=()=>{
@@ -55,7 +56,18 @@ export const EditPage:React.FC=()=>{
                 localStorage.setItem('@patient',JSON.stringify(newData))
             }
         })
-        navigate('/')
+        toast.success('Cliente editado com sucesso', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined,
+            });
+
+            setTimeout(() => {
+                navigate('/')
+            }, 3000);
         
     })
 
@@ -63,6 +75,7 @@ export const EditPage:React.FC=()=>{
         <>
         <Header content_link="Voltar" link="/"/>
         <main>
+            <ToastContainer/>
         <section className="section">
         <form  className="form"onSubmit={onSubmit}>
                         <div className="content">
