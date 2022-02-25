@@ -8,6 +8,7 @@ import {
   import {HomePage} from '../pages/Home'
   import {EditPage} from '../pages/Edit'
   import {RegisterPage} from '../pages/Register'
+import { Error } from "../pages/Error";
 
 
   export const RoutesApp:React.FC=()=>{
@@ -18,6 +19,7 @@ import {
                 <Route  path="/" element={<HomePage/>}/>
                 <Route path="/edit" element={<EditPage/>}/>
                 <Route path="/register" element={<RegisterPage/>}/>
+                <Route path="*" element={<Error/>} />
             </Routes>
         </BrowserRouter>
     )

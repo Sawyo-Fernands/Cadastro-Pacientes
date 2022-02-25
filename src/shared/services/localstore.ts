@@ -16,7 +16,7 @@ export async function savePatient(key:string,newPatient:IData){
     const hasPatient=patientStore.some((patient: IData)=>patient.cpf===newPatient.cpf)
 
     if(hasPatient){
-        alert('Esse cpf já está cadastrado !')
+        alert('O cpf já está cadastrado !')
         return
     }
 
