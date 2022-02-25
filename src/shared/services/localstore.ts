@@ -1,7 +1,7 @@
 import {IData} from '../interfaces'
 
 export async function getPatients(key:string){
-    const myPatients:any=await localStorage.getItem(key)
+    const myPatients:any=localStorage.getItem(key)
 
     let patientSave=JSON.parse(myPatients) || []
 
@@ -21,7 +21,7 @@ export async function savePatient(key:string,newPatient:IData){
     }
 
     patientStore.push(newPatient)
-    await localStorage.setItem(key,JSON.stringify(patientStore))
+    localStorage.setItem(key, JSON.stringify(patientStore))
 
 }
 

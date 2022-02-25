@@ -20,7 +20,6 @@ export const HomePage:React.FC=()=>{
 
             setData(result)
         }
-
         getAllParients()
 
     },[] )
@@ -48,9 +47,6 @@ export const HomePage:React.FC=()=>{
         })}
                  
         </section>
-           
-
-
         </main>
         </>
     )

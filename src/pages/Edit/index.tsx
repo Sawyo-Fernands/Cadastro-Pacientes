@@ -1,18 +1,73 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Header } from "../../shared/components/Header"
 import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Schema } from "../../shared/Schemas";
 import { IData } from "../../shared/interfaces";
+import { useParams } from "react-router-dom";
+import {  getPatients } from "../../shared/services/localstore";
 
 
 export const EditPage:React.FC=()=>{
 
-    const { register, handleSubmit, formState:{ errors } } = useForm<IData>({
+    const { id } =useParams()
+    const idNumber=Number(id)
+
+    const [patients,setPatients]=useState<IData[]>([])
+    
+    useEffect(()=>{
+
+        async function getAllParients(){
+            const result=await getPatients('@patient')
+
+            setPatients(result)
+            
+        }
+
+        getAllParients()
+
+    },[] )
+
+    useEffect(()=>{
+
+        if(patients !== undefined){
+            patients.map((value)=>{
+                if(value.id===idNumber){
+                    reset(value)     
+                }
+            })
+        }
+    },[patients])
+
+
+    const { register, handleSubmit, formState:{ errors },reset } = useForm<IData>({
         resolver: yupResolver(Schema)
       });
 
-      const onSubmit=handleSubmit(data => console.log(data))
+    const onSubmit=handleSubmit(data =>{
+
+        let patient={
+            id:idNumber,
+            nome:data.nome,
+            nascimento:data.nascimento,
+            cpf:data.cpf,
+            sexo:data.sexo ,
+            endereco:data.endereco ,
+            status:data.status
+        }
+
+        patients.forEach((item)=>{
+            if(item.id == idNumber){
+                let newData=patients.filter((item)=>{
+                    return (item.id !== idNumber)
+                })
+                
+                newData.unshift(patient)
+                localStorage.setItem('@patient',JSON.stringify(newData))
+            }
+        })
+        
+    })
 
     return(
         <>

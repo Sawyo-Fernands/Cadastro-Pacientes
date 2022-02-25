@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { IData } from "../../interfaces";
 
 import './card.css'
@@ -25,7 +26,9 @@ export const Card:React.FC<IData>=({id,nome,sexo,cpf,endereco,status,nascimento}
                     <p className="text">Status: {status}</p>
                 </div>
                 <div id="buttons">
+                    <Link to={{pathname:`/edit/${id}`}}>
                     <button id="button-edit">Editar</button>
+                    </Link>
                     <button id="button-inactive">Inativo</button>
                 </div>
             </div>

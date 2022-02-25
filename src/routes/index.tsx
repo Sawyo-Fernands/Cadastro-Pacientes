@@ -17,7 +17,7 @@ import { Error } from "../pages/Error";
         <BrowserRouter>
             <Routes>
                 <Route  path="/" element={<HomePage/>}/>
-                <Route path="/edit" element={<EditPage/>}/>
+                <Route path="/edit/:id" element={<EditPage/>}/>
                 <Route path="/register" element={<RegisterPage/>}/>
                 <Route path="*" element={<Error/>} />
             </Routes>
