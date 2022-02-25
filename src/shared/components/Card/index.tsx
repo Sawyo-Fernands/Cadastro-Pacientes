@@ -1,18 +1,32 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { Link } from "react-router-dom";
-import { IData } from "../../interfaces";
 
 import './card.css'
 
+interface ICard{
+    id: number;
+    nome:string;
+    nascimento:string;
+    cpf:string;
+    sexo:string;
+    endereco:string;
+    status:string;
+    buttons?:string;
+    card_background?:string;
 
-export const Card:React.FC<IData>=({id,nome,sexo,cpf,endereco,status,nascimento})=>{
+    inactivate_patient:()=>void;
+
+}
+
+
+export const Card:React.FC<ICard>=({id,nome,sexo,cpf,endereco,status,nascimento,buttons,card_background,inactivate_patient})=>{
 
     return(
-        <div id="card">
+        <div id="card" className={`${card_background}`}>
             <div className="card-header">
                 <h3>Paciente #{id}</h3>
             </div>
-            <div className="card-content">
+            <div className="card-content" >
                 <div>
                     <p className="text">Nome: {nome}</p>
                     <p className="text">Nascimento: {nascimento}</p>
@@ -27,9 +41,11 @@ export const Card:React.FC<IData>=({id,nome,sexo,cpf,endereco,status,nascimento}
                 </div>
                 <div id="buttons">
                     <Link to={{pathname:`/edit/${id}`}}>
-                    <button id="button-edit">Editar</button>
+                    <button id="button-edit" className={`${buttons}`}>Editar</button>
                     </Link>
-                    <button id="button-inactive">Inativo</button>
+                    <button id="button-inactive" 
+                    className={`${buttons}`} onClick={()=>inactivate_patient()}
+                    >Inativo</button>
                 </div>
             </div>
         </div>

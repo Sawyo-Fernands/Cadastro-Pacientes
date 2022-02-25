@@ -4,7 +4,7 @@ import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Schema } from "../../shared/Schemas";
 import { IData } from "../../shared/interfaces";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useGetPatients } from "../../hooks/useGetPatients";
 import { toast,ToastContainer } from "react-toastify";
 
@@ -14,7 +14,6 @@ export const EditPage:React.FC=()=>{
     const { id } =useParams()
     const idNumber=Number(id)
 
-    const navigate=useNavigate()
 
     const { patients }=useGetPatients()
 
@@ -58,16 +57,14 @@ export const EditPage:React.FC=()=>{
         })
         toast.success('Cliente editado com sucesso', {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             draggable: true,
             progress: undefined,
             });
 
-            setTimeout(() => {
-                navigate('/')
-            }, 3000);
+
         
     })
 

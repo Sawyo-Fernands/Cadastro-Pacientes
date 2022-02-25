@@ -34,6 +34,16 @@
     color: white;
 }
 
+.close-buttons{
+    display: none;
+}
+.background-inative{
+    background-color: gray;
+}
+.background-inative .card-header h3{
+    text-decoration: line-through;
+}
+
 @media (max-width:1417px){
     #card{
         width: 40%;
