@@ -1,5 +1,5 @@
 
-
+//Interface Global
 export interface IData{
     id: number;
     nome:string;

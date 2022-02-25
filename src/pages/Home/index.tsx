@@ -15,7 +15,6 @@ export const HomePage:React.FC=()=>{
             const result=await getPatients('@patient')
 
             setData(result)
-            console.log(result)
         }
 
         getAllParients()
@@ -28,12 +27,14 @@ export const HomePage:React.FC=()=>{
         <main className="main">
         <section className="section-cards">
 
-        <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
+        {data?.map((patient)=>{
+            return(
+                <Card  key={ patient.id} nome={patient.nome} 
+                cpf={patient.cpf} endereco={patient.endereco} 
+                sexo={patient.sexo} id={patient.id} 
+                nascimento={patient.nascimento} status={patient.status}/>
+            )
+        })}
                  
         </section>
            
