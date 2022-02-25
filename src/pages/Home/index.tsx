@@ -2,8 +2,7 @@ import React, { ChangeEvent, useEffect, useState } from "react"
 import { useGetPatients } from "../../hooks/useGetPatients"
 import { Card } from "../../shared/components/Card"
 import { Header } from "../../shared/components/Header"
-import { IData } from "../../shared/interfaces"
-import { getPatients } from "../../shared/services/localstore"
+
 import './home.css'
 
 

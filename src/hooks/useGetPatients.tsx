@@ -21,6 +21,6 @@ export const useGetPatients =()=>{
     },[] )
 
 
-    return{patients}
+    return{ patients }
 
 }
