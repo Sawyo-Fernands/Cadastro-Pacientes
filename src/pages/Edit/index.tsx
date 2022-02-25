@@ -4,8 +4,8 @@ import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Schema } from "../../shared/Schemas";
 import { IData } from "../../shared/interfaces";
-import { useParams } from "react-router-dom";
-import {  getPatients } from "../../shared/services/localstore";
+import { useNavigate, useParams } from "react-router-dom";
+import { useGetPatients } from "../../hooks/useGetPatients";
 
 
 export const EditPage:React.FC=()=>{
@@ -13,20 +13,9 @@ export const EditPage:React.FC=()=>{
     const { id } =useParams()
     const idNumber=Number(id)
 
-    const [patients,setPatients]=useState<IData[]>([])
-    
-    useEffect(()=>{
+    const navigate=useNavigate()
 
-        async function getAllParients(){
-            const result=await getPatients('@patient')
-
-            setPatients(result)
-            
-        }
-
-        getAllParients()
-
-    },[] )
+    const { patients }=useGetPatients()
 
     useEffect(()=>{
 
@@ -66,6 +55,7 @@ export const EditPage:React.FC=()=>{
                 localStorage.setItem('@patient',JSON.stringify(newData))
             }
         })
+        navigate('/')
         
     })
 

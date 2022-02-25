@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useEffect, useState } from "react"
+import { useGetPatients } from "../../hooks/useGetPatients"
 import { Card } from "../../shared/components/Card"
 import { Header } from "../../shared/components/Header"
 import { IData } from "../../shared/interfaces"
@@ -8,21 +9,13 @@ import './home.css'
 
 export const HomePage:React.FC=()=>{
 
-    const[data,setData]=useState<IData[]>([])
+    const {patients}=useGetPatients()
 
     const [filter,setFilter]=useState('')
 
-    let dataFilter=data.filter(item =>item.nome.toLocaleLowerCase().includes(filter))
+    let dataFilter=patients.filter(item =>item.nome.toLocaleLowerCase().includes(filter))
 
-    useEffect(()=>{
-        async function getAllParients(){
-            const result=await getPatients('@patient')
-
-            setData(result)
-        }
-        getAllParients()
-
-    },[] )
+    
 
     return(
         <>

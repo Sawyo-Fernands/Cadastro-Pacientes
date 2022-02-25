@@ -5,8 +5,11 @@ import { IData } from "../../shared/interfaces";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Schema } from "../../shared/Schemas";
 import { savePatient } from "../../shared/services/localstore";
+import { useNavigate } from "react-router-dom";
 
 export const RegisterPage:React.FC=()=>{
+
+    const navigate=useNavigate()
 
    
 
@@ -27,6 +30,7 @@ export const RegisterPage:React.FC=()=>{
               status:data.status
           }
           savePatient("@patient",patient)
+          navigate('/')
           
       })
 
