@@ -17,7 +17,7 @@ interface ICard{
     visibility?:string;
 
     inactivate_patient:()=>void;
-    delete_patient:()=>void;
+    delete_patient: () => void;
 
 }
 

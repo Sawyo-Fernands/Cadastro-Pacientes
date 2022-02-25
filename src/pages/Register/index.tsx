@@ -5,7 +5,6 @@ import { IData } from "../../shared/interfaces";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Schema } from "../../shared/Schemas";
 import { savePatient } from "../../shared/services/localstore";
-import { ToastContainer, toast } from 'react-toastify';
 
 export const RegisterPage:React.FC=()=>{
 
@@ -27,27 +26,14 @@ export const RegisterPage:React.FC=()=>{
               status:data.status
           }
           
-         const hasPatient=savePatient("@patient",patient)
-
-            toast.success('Cliente cadastrado com sucesso', {
-                position: "top-right",
-                autoClose: 500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: true,
-                progress: undefined,
-                });
+         savePatient("@patient",patient)
        
-         
-  
       })
 
     return(
         <>
         <Header content_link="Voltar" link="/"/>
         <main>
-            <ToastContainer/>
         <section className="section">
                 <form  className="form"onSubmit={onSubmit}>
                         <div className="content">

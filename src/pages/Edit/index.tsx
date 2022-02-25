@@ -14,10 +14,13 @@ export const EditPage:React.FC=()=>{
     const { id } =useParams()
     const idNumber=Number(id)
 
-
     const { patients }=useGetPatients()
 
-    useEffect(()=>{
+    const { register, handleSubmit, formState:{ errors },reset } = useForm<IData>({
+        resolver: yupResolver(Schema)
+      });
+
+      useEffect(()=>{
 
         if(patients !== undefined){
             patients.map((value)=>{
@@ -27,11 +30,6 @@ export const EditPage:React.FC=()=>{
             })
         }
     },[patients])
-
-
-    const { register, handleSubmit, formState:{ errors },reset } = useForm<IData>({
-        resolver: yupResolver(Schema)
-      });
 
     const onSubmit=handleSubmit(data =>{
 

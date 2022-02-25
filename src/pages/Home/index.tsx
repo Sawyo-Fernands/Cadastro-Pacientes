@@ -2,7 +2,6 @@ import React, { ChangeEvent, useState } from "react"
 import { useGetPatients } from "../../hooks/useGetPatients"
 import { Card } from "../../shared/components/Card"
 import { Header } from "../../shared/components/Header"
-import { IData } from "../../shared/interfaces"
 import { deletePatient } from "../../shared/services/localstore"
 
 import './home.css'
@@ -10,9 +9,10 @@ import './home.css'
 
 export const HomePage:React.FC=()=>{
 
-    const {patients,setPatients}=useGetPatients()
+    const {patients,setPatients ,noPatients}=useGetPatients()
 
     const [filter,setFilter]=useState('')
+
 
     let dataFilter=patients.filter(item =>item.nome.toLocaleLowerCase().includes(filter))
 
@@ -58,6 +58,12 @@ export const HomePage:React.FC=()=>{
         </section>
 
         <section className="section-cards">
+
+            {noPatients && (
+                <div>
+                    <h1>Não há pacientes registrados</h1>
+                </div>
+            )}
 
         {dataFilter?.map((patient)=>{  
                 if(patient.status ==="inativo"){
