@@ -1,0 +1,48 @@
+#card{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 1rem 1.5rem;
+    width: 27%;
+}
+.card-header{
+    border-bottom: 0.4px solid rgba(0, 0, 0, 0.116);
+    font-family: 'poppins';
+}
+
+.text{
+    font-family: 'Open sans';
+    font-size: 15px;
+}
+#buttons{
+    display: flex;
+    gap: 1rem;
+}
+#buttons button{
+    outline: none;
+    border: 0.1px solid transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins';
+}
+#buttons button:first{
+    background-color: rgb(218, 218, 141);
+}
+#buttons #button-inactive{
+    background-color: rgb(228, 87, 87);
+    color: white;
+}
+#buttons #button-edit{
+    background-color: rgb(77, 77, 224);
+    color: white;
+}
+
+@media (max-width:1417px){
+    #card{
+        width: 40%;
+    }
+}
+@media (max-width:850px){
+        #card{
+            width: 100%;
+        }
+} 

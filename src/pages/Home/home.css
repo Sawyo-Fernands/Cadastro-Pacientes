@@ -1,0 +1,8 @@
+.section-cards{
+    width: 90%;
+    margin: auto;
+    margin-top: 10rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+} 
