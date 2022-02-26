@@ -39,7 +39,16 @@ export function deletePatient(patients:IData[],id:number){
 
 export async function editPatient(patients:IData[],patient:IData,id:number){
 
-    
+    let patientStore :IData[]=await getPatients('@patient')
+
+    const hasPatient=patientStore.some((patientData: IData)=>patientData.cpf===patient.cpf)
+
+    if(hasPatient){
+        alert('O cpf já está cadastrado !')
+
+        return 
+    }
+
     patients.forEach((item)=>{
         if(item.id == id){
             let newData=patients.filter((item)=>{
