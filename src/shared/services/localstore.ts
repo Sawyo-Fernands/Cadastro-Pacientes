@@ -17,12 +17,12 @@ export async function savePatient(key:string,newPatient:IData){
 
     if(hasPatient){
         alert('O cpf já está cadastrado !')
-
         return 
     }
 
     patientStore.push(newPatient)
     localStorage.setItem(key, JSON.stringify(patientStore))
+    alert('Paciente cadastrado !')
 
 }
 
@@ -39,25 +39,29 @@ export function deletePatient(patients:IData[],id:number){
 
 export async function editPatient(patients:IData[],patient:IData,id:number){
 
-    let patientStore :IData[]=await getPatients('@patient')
-
-    const hasPatient=patientStore.some((patientData: IData)=>patientData.cpf===patient.cpf)
-
-    if(hasPatient){
-        alert('O cpf já está cadastrado !')
-
-        return 
-    }
 
     patients.forEach((item)=>{
+
         if(item.id == id){
             let newData=patients.filter((item)=>{
                 return (item.id !== id )
             })
-            newData.unshift(patient)
-            localStorage.setItem('@patient',JSON.stringify(newData))
+
+            let patientStore :IData[]=newData
+            const hasPatient=patientStore.some((patientData: IData)=>patientData.cpf===patient.cpf)
+            if(hasPatient){
+                alert('O cpf já está cadastrado !')
+                return 
+            }
+            else{
+                newData.unshift(patient)
+                localStorage.setItem('@patient',JSON.stringify(newData))
+                alert('Dados editados !')
+            }
+           
                 
         }
     })
+ 
 
 }

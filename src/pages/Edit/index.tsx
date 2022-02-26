@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Header } from "../../shared/components/Header"
 import {useForm} from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -16,6 +16,7 @@ export const EditPage:React.FC=()=>{
 
     const { patients }=useGetPatients()
 
+
     const { register, handleSubmit, formState:{ errors },reset } = useForm<IData>({
         resolver: yupResolver(Schema)
       });
@@ -32,7 +33,7 @@ export const EditPage:React.FC=()=>{
     },[patients])
 
     const onSubmit=handleSubmit(data =>{
-
+       
         let patient={
             id:idNumber,
             nome:data.nome,
@@ -42,7 +43,8 @@ export const EditPage:React.FC=()=>{
             endereco:data.endereco ,
             status:data.status
         }   
-        editPatient(patients,patient,idNumber)
+       editPatient(patients,patient,idNumber)
+       
     })
 
 

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Header } from "../../shared/components/Header"
 import {useForm} from 'react-hook-form'
 import { IData } from "../../shared/interfaces";
@@ -8,7 +8,6 @@ import { savePatient } from "../../shared/services/localstore";
 
 export const RegisterPage:React.FC=()=>{
 
-    
 
     const { register, handleSubmit, formState:{ errors } } = useForm<IData>({
         resolver: yupResolver(Schema)
@@ -27,7 +26,8 @@ export const RegisterPage:React.FC=()=>{
               status:data.status
           }
           
-      savePatient("@patient",patient)
+     savePatient("@patient",patient)
+     
 
       })
 
