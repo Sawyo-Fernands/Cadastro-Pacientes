@@ -36,3 +36,19 @@ export function deletePatient(patients:IData[],id:number){
     return myPatients
 
 }
+
+export async function editPatient(patients:IData[],patient:IData,id:number){
+
+    
+    patients.forEach((item)=>{
+        if(item.id == id){
+            let newData=patients.filter((item)=>{
+                return (item.id !== id )
+            })
+            newData.unshift(patient)
+            localStorage.setItem('@patient',JSON.stringify(newData))
+                
+        }
+    })
+
+}

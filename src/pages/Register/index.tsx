@@ -10,7 +10,6 @@ export const RegisterPage:React.FC=()=>{
 
     
 
-
     const { register, handleSubmit, formState:{ errors } } = useForm<IData>({
         resolver: yupResolver(Schema)
       });
@@ -45,7 +44,7 @@ export const RegisterPage:React.FC=()=>{
                         </div>
                         <div className="content">
                             <label >Data de Nascimento</label>
-                            <input type="text" {...register('nascimento')}/>
+                            <input type="date" {...register('nascimento')}/>
                             <p className="error-message">{errors.nascimento?.message}</p>
                         </div>
                         <div className="content">

@@ -12,8 +12,6 @@ export const HomePage:React.FC=()=>{
     const {patients,setPatients ,noPatients}=useGetPatients()
 
     const [filter,setFilter]=useState('')
-
-
     let dataFilter=patients.filter(item =>item.nome.toLocaleLowerCase().includes(filter))
 
     function handleCardID(id:number,nome:string,nascimento:string,cpf:string,endereco:string,sexo:string){
@@ -66,6 +64,7 @@ export const HomePage:React.FC=()=>{
             )}
 
         {dataFilter?.map((patient)=>{  
+            
                 if(patient.status ==="inativo"){
                     return(
                         <Card  key={ patient.id} nome={patient.nome} 

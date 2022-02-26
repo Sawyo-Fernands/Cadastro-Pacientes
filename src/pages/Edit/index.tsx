@@ -6,6 +6,7 @@ import { Schema } from "../../shared/Schemas";
 import { IData } from "../../shared/interfaces";
 import {  useParams } from "react-router-dom";
 import { useGetPatients } from "../../hooks/useGetPatients";
+import { editPatient } from "../../shared/services/localstore";
 
 
 export const EditPage:React.FC=()=>{
@@ -40,20 +41,10 @@ export const EditPage:React.FC=()=>{
             sexo:data.sexo ,
             endereco:data.endereco ,
             status:data.status
-        }
-
-        patients.forEach((item)=>{
-            if(item.id == idNumber){
-                let newData=patients.filter((item)=>{
-                    return (item.id !== idNumber )
-                })
-                newData.unshift(patient)
-                localStorage.setItem('@patient',JSON.stringify(newData))
-                    
-            }
-        })
-       
+        }   
+        editPatient(patients,patient,idNumber)
     })
+
 
     return(
         <>
@@ -68,7 +59,7 @@ export const EditPage:React.FC=()=>{
                         </div>
                         <div className="content">
                             <label >Data de Nascimento</label>
-                            <input type="text" {...register('nascimento')}/>
+                            <input type="date" {...register('nascimento')}  />
                             <p className="error-message">{errors.nascimento?.message}</p>
                         </div>
                         <div className="content">
