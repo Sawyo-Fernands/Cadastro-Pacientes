@@ -62,6 +62,21 @@ export async function editPatient(patients:IData[],patient:IData,id:number){
                 
         }
     })
- 
+}
+
+export function inactivePatient(patients:IData[],id:number,patient:IData,setPatients:(newValue:IData[])=>void){
+
+    patients.forEach((item)=>{
+        if(item.id === id){
+            let newData=patients.filter((item)=>{
+                return (item.id !== id)
+            })
+            newData.push(patient)
+            
+            localStorage.setItem('@patient',JSON.stringify(newData))
+            setPatients(newData)
+        }   
+    })
+
 
 }

@@ -2,45 +2,34 @@ import React, { ChangeEvent, useState } from "react"
 import { useGetPatients } from "../../hooks/useGetPatients"
 import { Card } from "../../shared/components/Card"
 import { Header } from "../../shared/components/Header"
-import { deletePatient } from "../../shared/services/localstore"
+import { IData } from "../../shared/interfaces"
+import { deletePatient, inactivePatient } from "../../shared/services/localstore"
 
 import './home.css'
 
 
 export const HomePage:React.FC=()=>{
 
-    const {patients,setPatients ,noPatients}=useGetPatients()
+    const {patients,setPatients,noPatients}=useGetPatients()
 
     const [filter,setFilter]=useState('')
-    let dataFilter=patients.filter(item =>item.nome.toLocaleLowerCase().includes(filter))
+    let dataFilter :IData[]=patients.filter(item =>item.nome.toLocaleLowerCase().includes(filter))
 
     function handleCardID(id:number,nome:string,nascimento:string,cpf:string,endereco:string,sexo:string){
         let patient={
-            id:id,
-            nome:nome,
+            id:id,nome:nome,
             nascimento:nascimento,
             cpf:cpf,
-            sexo:sexo ,
-            endereco:endereco ,
+            sexo:sexo,
+            endereco:endereco,
             status:"inativo"
         }
+             inactivePatient(patients,id,patient,setPatients)   
+    }  
 
-        patients.forEach((item)=>{
-            if(item.id === id){
-                let newData=patients.filter((item)=>{
-                    return (item.id !== id)
-                })
-                newData.push(patient)
-                
-                localStorage.setItem('@patient',JSON.stringify(newData))
-                setPatients(newData)
-            }   
-        })
-
-    }   
     async function handleCardDelete(id:number){
-            const result =await deletePatient(patients,id)
-            setPatients(result)
+           const result=await deletePatient(patients,id)   
+           setPatients(result)
     }
 
     return(

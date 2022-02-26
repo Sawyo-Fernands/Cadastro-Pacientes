@@ -9,6 +9,7 @@ export const useGetPatients=()=>{
 
     const [noPatients,setNoPatients]=useState(false)
 
+
     useEffect(()=>{
 
         async function getAllParients(){
