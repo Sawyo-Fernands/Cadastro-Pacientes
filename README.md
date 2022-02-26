@@ -20,4 +20,4 @@ A clínica ACME deseja ter uma solução web para consultar e cadastrar seus pac
 ## Execução
 
 - Executar o comando yarn ou npm
-- Executar o comando  yarn dev ou npm dev
+- Em seguida executar o comando  yarn dev ou npm dev
