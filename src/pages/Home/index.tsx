@@ -64,7 +64,7 @@ export const HomePage:React.FC=()=>{
                         buttons="close-buttons" card_background="background-inative"
                         color_text="text_red" visibility="block"
                         delete_patient={()=>handleCardDelete(patient.id)}
-                        inactivate_patient={()=>{handleCardID(patient)}}
+                        inactivate_patient={()=>handleCardID(patient)}
                     />
                     )
                 }

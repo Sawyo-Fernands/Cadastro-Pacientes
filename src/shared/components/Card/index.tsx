@@ -1,16 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { IData } from "../../interfaces";
 
 import './card.css'
 
-interface ICard{
-    id: number;
-    nome:string;
-    nascimento:string;
-    cpf:string;
-    sexo:string;
-    endereco:string;
-    status:string;
+interface ICard extends IData{
+    
     buttons?:string;
     card_background?:string;
     color_text?:string;
