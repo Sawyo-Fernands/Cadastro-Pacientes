@@ -15,16 +15,17 @@ export const HomePage:React.FC=()=>{
     const [filter,setFilter]=useState('')
     let dataFilter :IData[]=patients.filter(item =>item.nome.toLocaleLowerCase().includes(filter))
 
-    function handleCardID(id:number,nome:string,nascimento:string,cpf:string,endereco:string,sexo:string){
+    function handleCardID(data:IData){
         let patient={
-            id:id,nome:nome,
-            nascimento:nascimento,
-            cpf:cpf,
-            sexo:sexo,
-            endereco:endereco,
+            id:data.id,
+            nome:data.nome,
+            nascimento:data.nascimento,
+            cpf:data.cpf,
+            sexo:data.sexo,
+            endereco:data.endereco,
             status:"inativo"
         }
-             inactivePatient(patients,id,patient,setPatients)   
+             inactivePatient(patients,patient.id,patient,setPatients)   
     }  
 
     async function handleCardDelete(id:number){
@@ -63,7 +64,7 @@ export const HomePage:React.FC=()=>{
                         buttons="close-buttons" card_background="background-inative"
                         color_text="text_red" visibility="block"
                         delete_patient={()=>handleCardDelete(patient.id)}
-                        inactivate_patient={()=>{handleCardID(patient.id,patient.nome,patient.nascimento,patient.cpf,patient.endereco,patient.sexo)}}
+                        inactivate_patient={()=>{handleCardID(patient)}}
                     />
                     )
                 }
@@ -72,7 +73,7 @@ export const HomePage:React.FC=()=>{
                         cpf={patient.cpf} endereco={patient.endereco} 
                         sexo={patient.sexo} id={patient.id} 
                         nascimento={patient.nascimento} status={patient.status}
-                        inactivate_patient={()=>{handleCardID(patient.id,patient.nome,patient.nascimento,patient.cpf,patient.endereco,patient.sexo)}}/>
+                        inactivate_patient={()=>{handleCardID(patient)}}/>
             )
         })}   
         </section>
