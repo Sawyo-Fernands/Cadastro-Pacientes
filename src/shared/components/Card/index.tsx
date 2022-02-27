@@ -17,36 +17,34 @@ interface ICard extends IData{
 }
 
 
-export const Card:React.FC<ICard>=({id,nome,sexo,cpf,endereco,status,nascimento,buttons,card_background,inactivate_patient,color_text,visibility,delete_patient})=>{
-
-    
+export const Card:React.FC<ICard>=(props)=>{
 
     return(
-        <div id="card" className={`${card_background}`}>
+        <div id="card" className={`${props.card_background}`}>
             <div className="card-header">
-                <h3>Paciente #{id}</h3>
+                <h3>Paciente #{props.id}</h3>
             </div>
             <div className="card-content" >
                 <div>
-                    <p className="text">Nome: {nome}</p>
-                    <p className="text">Nascimento: {nascimento}</p>
+                    <p className="text">Nome: {props.nome}</p>
+                    <p className="text">Nascimento: {props.nascimento}</p>
                 </div>
                 <div>
-                    <p className="text">CPF:{cpf}</p>
-                    <p className="text">Sexo: {sexo}</p>
+                    <p className="text">CPF:{props.cpf}</p>
+                    <p className="text">Sexo: {props.sexo}</p>
                 </div>
                 <div>
-                    <p className="text">Endereço: {endereco}</p>
-                    <p className={`text ${color_text}`}>Status: {status}</p>
+                    <p className="text">Endereço: {props.endereco}</p>
+                    <p className={`text ${props.color_text}`}>Status: {props.status}</p>
                 </div>
                 <div id="buttons">
-                    <Link to={{pathname:`/edit/${id}`}}>
-                    <button id="button-edit" className={`${buttons}`}>Editar</button>
+                    <Link to={{pathname:`/edit/${props.id}`}}>
+                    <button id="button-edit" className={`${props.buttons}`}>Editar</button>
                     </Link>
                     <button id="button-inactive" 
-                    className={`${buttons}`} onClick={()=>inactivate_patient()}
+                    className={`${props.buttons}`} onClick={()=>props.inactivate_patient()}
                     >Inativo</button>
-                    <button className={`delete-item ${visibility}`} onClick={delete_patient}>Deletar</button>
+                    <button className={`delete-item ${props.visibility}`} onClick={props.delete_patient}>Deletar</button>
                 </div>
             </div>
         </div>
