@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react"
+import React, { ChangeEvent, useCallback, useState } from "react"
 import { useGetPatients } from "../../hooks/useGetPatients"
 import { Card } from "../../shared/components/Card"
 import { Header } from "../../shared/components/Header"
@@ -8,14 +8,14 @@ import { deletePatient, inactivePatient } from "../../shared/services/localstore
 import './home.css'
 
 
-export const HomePage:React.FC=()=>{
+export const HomePage=()=>{
 
     const {patients,setPatients,noPatients}=useGetPatients()
 
     const [filter,setFilter]=useState('')
     let dataFilter :IData[]=patients.filter(item =>item.nome.toLocaleLowerCase().includes(filter))
 
-    function handleCardID(data:IData){
+    const handleCardID=useCallback((data:IData)=>{
         let patient={
             id:data.id,
             nome:data.nome,
@@ -26,12 +26,12 @@ export const HomePage:React.FC=()=>{
             status:"inativo"
         }
              inactivePatient(patients,patient.id,patient,setPatients)   
-    }  
+    } ,[patients]) 
 
-    async function handleCardDelete(id:number){
-           const result=await deletePatient(patients,id)   
-           setPatients(result)
-    }
+     const handleCardDelete=useCallback( async (id:number)=>{
+            const result=await deletePatient(patients,id)   
+            setPatients(result)
+        },[patients])
 
     return(
         <>

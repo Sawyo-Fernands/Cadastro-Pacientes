@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Schema } from "../../shared/Schemas";
 import { savePatient } from "../../shared/services/localstore";
 
-export const RegisterPage:React.FC=()=>{
+export const RegisterPage=()=>{
 
 
     const { register, handleSubmit, formState:{ errors } } = useForm<IData>({

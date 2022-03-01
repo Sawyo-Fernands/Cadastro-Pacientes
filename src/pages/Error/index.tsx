@@ -4,7 +4,7 @@ import './error.css'
 
 import errorIMG from '../../shared/assets/notfound.png'
 
-export const Error:React.FC=()=>{
+export const Error=()=>{
     return(
        <div className="container-error">
            <img src={errorIMG} alt="notfound" />

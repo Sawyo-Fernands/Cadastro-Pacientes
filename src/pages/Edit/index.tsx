@@ -9,7 +9,7 @@ import { useGetPatients } from "../../hooks/useGetPatients";
 import { editPatient } from "../../shared/services/localstore";
 
 
-export const EditPage:React.FC=()=>{
+export const EditPage=()=>{
 
     const { id } =useParams()
     const idNumber=Number(id)

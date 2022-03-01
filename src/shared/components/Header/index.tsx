@@ -9,7 +9,7 @@ interface IHeader{
     content_link:string;
 }
 
-export const Header:React.FC<IHeader>=({link,content_link})=>{
+export const Header=({link,content_link}:IHeader)=>{
 
     return (
 

@@ -17,7 +17,7 @@ interface ICard extends IData{
 }
 
 
-export const Card:React.FC<ICard>=(props)=>{
+export const Card=(props:ICard)=>{
 
     return(
         <div id="card" className={`${props.card_background}`}>
